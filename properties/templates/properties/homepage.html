@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{% for property in properties %}
-    <p>
-    <img src="{{ property.bedroom_img }}">
-    <br>
-    {{ property.address }}, {{ property.city }}, {{ property.state }}
-    <br>
-    {{ property.bed_no }} bedroom {{ property.type }}
-    <br>
-    Price: {{ property.price }} NGN
-    </p>
-{% endfor %}
-</body>
-</html>
+{% extends 'properties/base.html'%}
+{% block content %}
+    {% for property in properties %}
+        <p>
+            <a href="{% url 'apartment_detail' pk=property.pk %}"><img src="{{ property.sitting_room_img }}"></a>
+        <br>
+        {{ property.address }}, {{ property.city }}, {{ property.state }}
+        <br>
+        {{ property.bed_no }} bedroom {{ property.type }}
+        <br>
+            <span class="btn btn-primary">Price: {{ property.price }} NGN</span>
+        </p>
+    {% endfor %}
+{% endblock %}
